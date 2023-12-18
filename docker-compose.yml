@@ -1,0 +1,37 @@
+version: '3.8'
+services:
+  # Service PHP 8
+  php:
+    image: php:8.0-apache
+    container_name: php-container
+    ports:
+      - "8080:80"
+    volumes:
+      - ./api:/var/www/html
+    depends_on:
+      - composer
+    
+  # Service MySQL
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-container
+    ports:
+      - "8181:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: artichaut
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: password
+  # Service Composer
+  composer:
+    image: composer:2
+    container_name: composer-container
+    volumes:
+      - ./api:/app
+    command: bash -c "composer install && apache2-foreground"
+
+
+
+
+
+
