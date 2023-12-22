@@ -15,19 +15,19 @@ App::run();
 
 
 // VAlEURS PDF
-use mikehaertl\pdftk\Pdf;
-$pdfe = new Pdf('pdf/cerfa_16216_01.pdf');
-$pdfp = new Pdf('pdf/cerfa_11580_05.pdf');
+// use mikehaertl\pdftk\Pdf;
+// $pdfe = new Pdf('pdf/cerfa_16216_01.pdf');
+// $pdfp = new Pdf('pdf/cerfa_11580_05.pdf');
 
-$data = $pdfe->getDataFields();
-$arr = (array) $data;
-$arr = $data->__toArray();
-print("<pre>".print_r($arr,true)."</pre>");
+// $data = $pdfe->getDataFields();
+// $arr = (array) $data;
+// $arr = $data->__toArray();
+// print("<pre>".print_r($arr,true)."</pre>");
 
-$data2 = $pdfp->getDataFields();
-$arr2 = (array) $data2;
-$arr2 = $data2->__toArray();
-print("<pre>".print_r($arr2,true)."</pre>");
+// $data2 = $pdfp->getDataFields();
+// $arr2 = (array) $data2;
+// $arr2 = $data2->__toArray();
+// print("<pre>".print_r($arr2,true)."</pre>");
 
 
 
@@ -47,16 +47,16 @@ print("<pre>".print_r($arr2,true)."</pre>");
 
 
 // VERIFICATION JSON
-// use Application\Controller\ValidatePdf;
+use Application\Controller\ValidatePdf;
 
-// $pdfValidate = new Application\Controller\ValidatePdf();
+$pdfValidate = new Application\Controller\ValidatePdf("entreprise");
 
-// $jsonDoc = file_get_contents("./dataDoc.json");
-// $jsonClient = file_get_contents("./dataClient.json");
-// $parsed_jsonDoc = json_decode($jsonDoc, true);
-// $parsed_jsonClient = json_decode($jsonClient, true);
 
-// print_r($pdfValidate->validate($parsed_jsonDoc, $parsed_jsonClient));
+$jsonClient = file_get_contents("./dataClient.json");
+
+$parsed_jsonClient = json_decode($jsonClient, true);
+
+print_r($pdfValidate->validate($parsed_jsonDoc, $parsed_jsonClient));
 
 
 

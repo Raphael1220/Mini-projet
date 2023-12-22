@@ -1,4 +1,8 @@
 {
+	"type": {
+		"type": "string",
+		"mandatory": true
+	},
     "receiptNumber": {
         "type": "string",
         "mandatory": true,
@@ -45,24 +49,24 @@
         "field": "a10"
     },
 	"decreeDate": {
-        "type": "timestamp",
-        "mandatory": true,
+        "type": "string",
+        "mandatory": false,
 		"field": "d12",
 		"dependency": {
 			"field": "FRUP"
 		}
     },
 	"publishesDate": {
-        "type": "timestamp",
-        "mandatory": true,
+        "type": "string",
+        "mandatory": false,
 		"field": "d13",
 		"dependency": {
 			"field": "FRUP"
 		}
     },
 	"moselleDecreeDate": {
-        "type": "timestamp",
-        "mandatory": true,
+        "type": "string",
+        "mandatory": false,
 		"field": "d14",
 		"dependency": {
 			"field": "FRUP_MOZEL"
@@ -70,50 +74,10 @@
     },
 	"preciseOther": {
         "type": "string",
-        "mandatory": true,
+        "mandatory": false,
 		"field": "a11",
 		"dependency": {
 			"field": "AUTRE"
-		}
-    },
-	"ORGA_SCI_TECH_aprovalDate": {
-        "type": "timestamp",
-        "mandatory": true,
-		"field": "a14",
-		"dependency": {
-			"field": "ORGA_SCI_TECH"
-		}
-    },
-	"FOND_MONUMENTS_aprovalDate": {
-        "type": "timestamp",
-        "mandatory": true,
-		"field": "a15",
-		"dependency": {
-			"field": "FOND_MONUMENTS"
-		}
-    },
-	"ORGA_AIDE_FIN_aprovalDate": {
-        "type": "timestamp",
-        "mandatory": true,
-		"field": "a16",
-		"dependency": {
-			"field": "ORGA_AIDE_FIN"
-		}
-    },
-	"FED_ORGA_aprovalDate": {
-        "type": "timestamp",
-        "mandatory": true,
-		"field": "a17",
-		"dependency": {
-			"field": "FED_ORGA"
-		}
-    },
-	"ORGA_ETAT_MEMBRE_aproval_date": {
-        "type": "timestamp",
-        "mandatory": true,
-		"field": "a18",
-		"dependency": {
-			"field": "ORGA_ETAT_MEMBRE"
 		}
     },
 	"donorName": {
@@ -152,42 +116,42 @@
 		"field": "a22"
     },
 	"donationsAmount": {
-        "type": "float",
-        "mandatory": true,
+        "type": "double",
+        "mandatory": false,
 		"field": "a22"
     },
 	"donationsAmountWordsLine1": {
         "type": "string",
-        "mandatory": true,
+        "mandatory": false,
 		"field": "a24"
     },
 	"donationsAmountWordsLine2": {
         "type": "string",
-        "mandatory": true,
+        "mandatory": false,
 		"field": "a25"
     },
 	"donationsDescription": {
         "type": "string",
-        "mandatory": true,
+        "mandatory": false,
 		"field": "a26"
     },
 	"paymentsAmount": {
-        "type": "float",
-        "mandatory": true,
+        "type": "double",
+        "mandatory": false,
 		"field": "a27"
     },
 	"paymentsAmountWordsLine1": {
         "type": "string",
-        "mandatory": true,
+        "mandatory": false,
 		"field": "a28"
     },
 	"paymentsAmountWordsLine2": {
         "type": "string",
-        "mandatory": true,
+        "mandatory": false,
 		"field": "a29"
     },
 	"totalAmount": {
-        "type": "float",
+        "type": "double",
         "mandatory": true,
 		"field": "a30"
     },
@@ -198,11 +162,11 @@
     },
 	"totalAmountWordsLine2": {
         "type": "string",
-        "mandatory": true,
+        "mandatory": false,
 		"field": "a33"
     },
 	"documentDateSignature": {
-        "type": "timestamp",
+        "type": "string",
         "mandatory": true,
 		"field": "a35"
     },	
@@ -288,6 +252,67 @@
 				},
 				"ORGA_ETAT_MEMBRE": {
 					"CAC16": 1
+				}
+			}
+		}
+	},
+	"date": {
+		"type": "date",
+		"dependency": {
+			"field": "organismType",
+			"values": {
+				"FRUP": {
+					"d12": "d/m/Y"
+				},
+				"FRUP_MOZEL": {
+					"d14": "d/m/Y"
+				},
+				"ORGA_SCI_TECH": {
+					"a14": "d/m/Y"
+				},
+				"FOND_MONUMENTS": {
+					"a15": "d/m/Y"
+				},
+				"ORGA_AIDE_FIN": {
+					"a16": "d/m/Y"
+				},
+				"FED_ORGA": {
+					"a17": "d/m/Y"
+				},
+				"ORGA_ETAT_MEMBRE": {
+					"a18": "d/m/Y"
+				}
+			}
+		}
+	},
+	"date2": {
+		"type": "date",
+		"dependency": {
+		   "field": "organismType",
+		   "values": {
+			  "FRUP": {
+				 "d13": "d/m/Y"
+			  }
+		   }
+		}
+	 },
+	"donationsType": {
+		"type": "string",
+		"mandatory": true,
+		"dependency": {
+			"field": "donationsType",
+			"values": {
+				"cashDelivery": {
+					"CAC17": 1
+				},
+				"check": {
+					"CAC17": 2
+				},
+				"transferDebit": {
+					"CAC17": 3
+				},
+                "other": {
+					"CAC17": 4
 				}
 			}
 		}
