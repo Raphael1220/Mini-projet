@@ -1,0 +1,44 @@
+version: '3.9'
+services:
+  # Service PHP 8
+  php:
+    build: 
+      dockerfile: ./Dockerfile
+    container_name: php-container
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_DATABASE: "passwordmsql"
+    volumes:
+      - dbData:/var/lib/mysql
+    networks:
+      - app-network
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: mysql  # même nom que le service mysql
+      PMA_PORT: 3306
+    restart: always
+    ports:
+      - 8081:80
+    networks:
+      - app-network
+
+volumes:
+  dbData:
+
+networks:
+  app-network:
+    driver: bridge
+
