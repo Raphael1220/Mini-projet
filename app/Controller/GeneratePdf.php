@@ -3,6 +3,15 @@ use mikehaertl\pdftk\Pdf;
 
 class GeneratePdf
 {
+    public function generate($data){
+        if (@$data[0] === "SOC" || @$data['type'] === "SOC"){
+            $this->entrepriseGenerate($data);
+        }
+        else if(@$data[0] === "IND" || @$data['type'] === "IND") {
+            $this->individualGenerate($data);
+        }
+    }
+
     // Fonction pour générer le pdf entreprise 
     // avec $data correspondant à la donnée json
     public function entrepriseGenerate($data)
@@ -12,19 +21,7 @@ class GeneratePdf
             $data
         )
         ->needAppearances()
-        ->execute();
-        return $pdfEG;
-    }
-
-    // Fonction pour envoyer le résultat au client 
-    // avec $result correspondant aux pdf génerer dans la méthode avec entrepriseGenerate($data)
-    // Utilisation : $pdfGenerator = new Application\Controller\GeneratePdf();
-    //               $result = $pdfGenerator->entrepriseGenerate($data);
-    //               $pdfGenerator->entrepriseSend($result);
-    public function entrepriseSend($result)
-    {
-        $pdfIS = new Pdf($result);
-        $pdfIS->saveAs('./new.pdf');
+        ->saveAs('./pdfGenerated/newSOC.pdf');
     }
 
     // Fonction pour générer le pdf particulier 
@@ -35,17 +32,7 @@ class GeneratePdf
         $resultIG = $pdfIG->fillForm(
             $data
         )
-        ->execute();
-    }
-
-    // Fonction pour envoyer le résultat au client 
-    // avec $result correspondant aux pdf génerer dans la méthode avec particulierGenerate($data)
-    // Utilisation : $pdfGenerator = new Application\Controller\GeneratePdf();
-    //               $result = $pdfGenerator->individualGenerate($data);
-    //               $pdfGenerator->individualSend($result);
-    public function individualSend($result)
-    {
-        $pdfES = new Pdf($result);
-        $pdfES->send($result);
+        ->needAppearances()
+        ->saveAs('./pdfGenerated/newIND.pdf');
     }
 }

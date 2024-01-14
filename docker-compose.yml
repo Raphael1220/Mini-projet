@@ -18,7 +18,7 @@ services:
       - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: "root"
-      MYSQL_DATABASE: "passwordmsql"
+      MYSQL_DATABASE: "pdf_generator"
     volumes:
       - dbData:/var/lib/mysql
     networks:
@@ -27,7 +27,7 @@ services:
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     environment:
-      PMA_HOST: mysql  # même nom que le service mysql
+      PMA_HOST: mysql
       PMA_PORT: 3306
     restart: always
     ports:

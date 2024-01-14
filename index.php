@@ -2,6 +2,11 @@
 require __DIR__ . '/vendor/autoload.php';
 
 use Application\Controller\App_config;
+use mikehaertl\pdftk\Pdf;
+use Application\Controller\ValidatePdf;
+use Application\Controller\GeneratePdf;
+
+
 $LOG_PATH = App_config::get('LOG_PATH', '');
 // echo "[LOG_PATH]: $LOG_PATH";
 
@@ -14,15 +19,14 @@ use Application\Controller\App;
 App::run();
 
 
-// VAlEURS PDF
-// use mikehaertl\pdftk\Pdf;
-// $pdfe = new Pdf('pdf/cerfa_16216_01.pdf');
+// Lecture champs PDF
+$pdfe = new Pdf('./pdf/cerfa_16216_01.pdf');
 // $pdfp = new Pdf('pdf/cerfa_11580_05.pdf');
 
-// $data = $pdfe->getDataFields();
-// $arr = (array) $data;
-// $arr = $data->__toArray();
-// print("<pre>".print_r($arr,true)."</pre>");
+$data = $pdfe->getDataFields();
+$arr = (array) $data;
+$arr = $data->__toArray();
+print("<pre>".print_r($arr,true)."</pre>");
 
 // $data2 = $pdfp->getDataFields();
 // $arr2 = (array) $data2;
@@ -31,37 +35,31 @@ App::run();
 
 
 
+// Fonction validate
+$jsonClientSOC = file_get_contents("./pdf/dataClientSOC.json");
+$jsonClientIND = file_get_contents("./pdf/dataClientIND.json");
 
+$pdfValidateSOC = new Application\Controller\ValidatePdf($jsonClientSOC);
+$pdfValidateIND = new Application\Controller\ValidatePdf($jsonClientIND);
 
-// use Application\Controller\GeneratePdf;
-// $pdfGenerator = new Application\Controller\GeneratePdf();
+$validateResultSOC = $pdfValidateSOC->validate();
+$validateResultIND = $pdfValidateIND->validate();
 
-// $data = '['CAC1' => '1']';
+// print_r($validateResultIND);
 
-// $result = $pdfGenerator->entrepriseGenerate($data);
-// $pdfGenerator->entrepriseSend($result);
-// print_r($pdfGenerator->entrepriseGenerate($data));
+// Fonction generate
 
+$pdfGenerator = new Application\Controller\GeneratePdf();
 
+// $pdfGenerator->generate($validateResultSOC);
+// $pdfGenerator->generate($validateResultIND);
 
+$data = ['type' => 'SOC', 'a10' => 'test'];
 
-
-// VERIFICATION JSON
-use Application\Controller\ValidatePdf;
-
-$pdfValidate = new Application\Controller\ValidatePdf("entreprise");
-
-
-$jsonClient = file_get_contents("./dataClient.json");
-
-$parsed_jsonClient = json_decode($jsonClient, true);
-
-print_r($pdfValidate->validate($parsed_jsonDoc, $parsed_jsonClient));
-
-
-
-
-
+$pdf = new Pdf('./pdf/cerfa_16216_01.pdf');
+$result1 = $pdf->fillForm($data)
+    ->needAppearances()
+    ->saveAs('./pdfGenerated/test.pdf');
 
 
 

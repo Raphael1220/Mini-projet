@@ -44,25 +44,25 @@
         "mandatory": true,
         "field": "a9"
     },
-	"organismObject": {
+	"organismObjectLine1": {
         "type": "string",
         "mandatory": true,
         "field": "a10"
     },
-	"donorName": {
+	"organismObjectLine2": {
+        "type": "string",
+        "mandatory": false,
+        "field": "a10-2"
+    },
+	"donorLastName": {
         "type": "string",
         "mandatory": true,
-		"field": "Denomination"
+		"field": "Nom"
     },
-	"donorLegalForm": {
+	"donorFirstName": {
         "type": "string",
         "mandatory": true,
-		"field": "Forme juridique"
-    },
-	"donorSiren": {
-        "type": "integer",
-        "mandatory": true,
-		"field": "Siren"
+		"field": "Prenom"
     },
 	"donorAddressNumber": {
         "type": "string",
@@ -84,61 +84,112 @@
         "mandatory": true,
 		"field": "a22"
     },
-	"donationsAmount": {
-        "type": "integer",
-        "mandatory": false,
+	"donorAddressCountry": {
+        "type": "string",
+        "mandatory": true,
 		"field": "a23"
-    },
-	"donationsAmountWordsLine1": {
-        "type": "string",
-        "mandatory": false,
-		"field": "a24"
-    },
-	"donationsAmountWordsLine2": {
-        "type": "string",
-        "mandatory": false,
-		"field": "a25"
-    },
-	"donationsDescription": {
-        "type": "string",
-        "mandatory": false,
-		"field": "a26"
     },
 	"paymentsAmount": {
         "type": "integer",
         "mandatory": false,
 		"field": "a27"
     },
-	"paymentsAmountWordsLine1": {
+	"paymentsAmountWords": {
         "type": "string",
         "mandatory": false,
 		"field": "a28"
     },
-	"paymentsAmountWordsLine2": {
-        "type": "string",
-        "mandatory": false,
-		"field": "a29"
-    },
-	"totalAmount": {
-        "type": "integer",
-        "mandatory": true,
-		"field": "a30"
-    },
-	"totalAmountWordsLine1": {
+	"documentDateSignatureAndDonationOrPaymentsDateDay": {
         "type": "string",
         "mandatory": true,
-		"field": "a32"
-    },
-	"totalAmountWordsLine2": {
-        "type": "string",
-        "mandatory": false,
-		"field": "a33"
-    },
-	"documentDateSignatureAndDonationOrPaymentsDate": {
-        "type": "date",
-        "mandatory": true,
-		"field": "a35"
+		"field": "d35-1"
     },	
+	"documentDateSignatureAndDonationOrPaymentsDateMouth": {
+        "type": "string",
+        "mandatory": true,
+		"field": "d35-2"
+    },
+	"documentDateSignatureAndDonationOrPaymentsDateYear": {
+        "type": "string",
+        "mandatory": true,
+		"field": "d35-3"
+    },	
+	"FRUPDay": {
+        "type": "string",
+        "mandatory": false,
+		"field": "d12-1"
+    },
+	"FRUPMonth": {
+        "type": "string",
+        "mandatory": false,
+		"field": "d12-2"
+    },
+	"FRUPYear": {
+        "type": "string",
+        "mandatory": false,
+		"field": "d12-3"
+    },
+	"FRUP2Day": {
+        "type": "string",
+        "mandatory": false,
+		"field": "d13-1"
+    },
+	"FRUP2Month": {
+        "type": "string",
+        "mandatory": false,
+		"field": "d13-2"
+    },
+	"FRUP2Year": {
+        "type": "string",
+        "mandatory": false,
+		"field": "d13-3"
+    },		
+	"FRUP_MOZELDay": {
+        "type": "string",
+        "mandatory": false,
+		"field": "d14-1"
+    },	
+	"FRUP_MOZELMonth": {
+        "type": "string",
+        "mandatory": false,
+		"field": "d14-2"
+    },
+	"FRUP_MOZELYear": {
+        "type": "string",
+        "mandatory": false,
+		"field": "d14-3"
+    },
+	"FOND_MONUMENTSDay": {
+        "type": "string",
+        "mandatory": false,
+		"field": "d15-3"
+    },
+	"FOND_MONUMENTSMonth": {
+        "type": "string",
+        "mandatory": false,
+		"field": "d15-3"
+    },
+	"FOND_MONUMENTSYear": {
+        "type": "string",
+        "mandatory": false,
+		"field": "d15-3"
+    },
+	"ORGA_ETAT_MEMBREDay": {
+        "type": "string",
+        "mandatory": false,
+		"field": "d18-3"
+    },
+	"ORGA_ETAT_MEMBREMonth": {
+        "type": "string",
+        "mandatory": false,
+		"field": "d18-3"
+    },
+	"ORGA_ETAT_MEMBREYear": {
+        "type": "string",
+        "mandatory": false,
+		"field": "d18-3"
+    },
+	
     "organismType": {
 		"type": "string",
 		"mandatory": true,
@@ -186,41 +237,35 @@
 				"EES_CONSUL": {
 					"CAC4": 1
 				},
-				"ORGA_SCI_TECH": {
-					"CAC5": 1
-				},
 				"ORGA_OEUVRE_ART": {
 					"CAC6": 1
 				},
-				"THESE": {
-					"CAC7": 1
+				"RECHERCHE_BNL": {
+					"CAC40": 1
 				},
-				"SOCIETE_ETAT": {
-					"CAC8": 1
+				"ENTREPRISE_INSERTION": {
+					"CAC41": 1
 				},
-				"SOCIETE_NAT_AUDIOV": {
-					"CAC9": 1
+				"ASS_INTERMEDIAIRE": {
+					"CAC42": 1
 				},
-				"SOCIETE_NAT_MUSIC": {
-					"CAC10": 1
+                "ATELIER_INSERTION": {
+					"CAC43": 1
 				},
-				"FOND_MONUMENTS": {
-					"CAC11": 1
+				"ENTREPRISE_ADAPTEE": {
+					"CAC44": 1
 				},
-				"FONDS_DONATION": {
-					"CAC12": 1
+				"ANR": {
+					"CAC45": 1
 				},
-				"ORGA_AIDE_FIN": {
-					"CAC13": 1
+				"GRP_EMPLOIYEURS": {
+					"CAC46": 1
 				},
-				"FED_ORGA": {
-					"CAC14": 1
+				"ASS_UP": {
+					"CAC47": 1
 				},
-				"ORGA_BIENS_CULT": {
-					"CAC15": 1
-				},
-				"ORGA_ETAT_MEMBRE": {
-					"CAC16": 1
+				"ASS_PRESSE": {
+					"CAC48": 1
 				}
 			}
 		}
@@ -230,47 +275,71 @@
         "mandatory": false,
         "field": "a11"
     },
-	"date": {
-		"type": "date",
+	"CGI": {
+		"type": "string",
+		"mandatory": true,
 		"dependency": {
-			"field": "organismType",
+			"field": "CGI",
 			"values": {
-				"FRUP": {
-					"d12": "d/m/Y"
+				"200CG1": {
+					"CAC21": 1
 				},
-				"FRUP_MOZEL": {
-					"d14": "d/m/Y"
-				},
-				"ORGA_SCI_TECH": {
-					"a14": "d/m/Y"
-				},
-				"FOND_MONUMENTS": {
-					"a15": "d/m/Y"
-				},
-				"ORGA_AIDE_FIN": {
-					"a16": "d/m/Y"
-				},
-				"FED_ORGA": {
-					"a17": "d/m/Y"
-				},
-				"ORGA_ETAT_MEMBRE": {
-					"a18": "d/m/Y"
+				"978CGI": {
+					"CAC22": 1
 				}
 			}
 		}
 	},
-	"date2": {
-		"type": "date",
+	"donationsForm": {
+		"type": "string",
+		"mandatory": true,
 		"dependency": {
-		   "field": "organismType",
-		   "values": {
-			  "FRUP": {
-				 "d13": "d/m/Y"
-			  }
-		   }
+			"field": "donationsForm",
+			"values": {
+				"cashDelivery": {
+					"CAC23": 1
+				},
+				"check": {
+					"CAC23": 2
+				},
+				"transferDebit": {
+					"CAC23": 3
+				},
+				"otherForm": {
+					"CAC23": 4
+				}
+			}
 		}
-	 },
-	 
+	},
+	"donationsNature": {
+		"type": "string",
+		"mandatory": true,
+		"dependency": {
+			"field": "donationsNature",
+			"values": {
+				"cashDelivery": {
+					"CAC27": 1
+				},
+				"check": {
+					"CAC27": 2
+				},
+				"transferDebit": {
+					"CAC27": 3
+				},
+				"otherForm": {
+					"CAC27": 4
+				},
+				"otherNature": {
+					"CAC27": 5
+				}
+			}
+		}
+	},
+	"otherNatureDescription": {
+        "type": "string",
+        "mandatory": false,
+		"field": "a31"
+    },
 	"donationsType": {
 		"type": "string",
 		"mandatory": true,
@@ -285,9 +354,6 @@
 				},
 				"transferDebit": {
 					"CAC17": 3
-				},
-                "other": {
-					"CAC17": 4
 				}
 			}
 		}
